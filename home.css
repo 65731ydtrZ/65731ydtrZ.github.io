@@ -1,0 +1,594 @@
+@font-face {
+    font-family: 'MyFirstFont';
+    src: url('Hero-Light.eot'); /* IE9 Compat Modes */
+    src: url('Hero-Light.eot') format('embedded-opentype'), /* IE6-IE8 */
+         url('Hero-Light.woff') format('woff'), /* Modern Browsers */
+         url('Hero-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('Hero-Light.svg') format('svg'); /* Legacy iOS */
+}
+  
+h2 {
+    font-family: myFirstFont;
+    color: rgb(255, 255, 255);
+    font-size: 5em;
+}
+
+.nowrap {
+    white-space: nowrap;
+  }
+
+.col-md-12 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    font-family: myFirstFont;
+    color: rgb(255, 255, 255);
+    font-size: 5em;
+  }
+
+  .col-md-10 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+  }
+
+  .col-md-2 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+  }
+
+body {
+    background-color: #000000; /*Red Hex Code is #B41B1B*/
+}
+
+nav {
+    text-transform: none;
+    font-family: myFirstFont;
+    z-index: 100;
+}
+
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.navbar-companyname {
+    font-size: 2em;
+}
+
+.nav-link1 {
+    font-size: 2em;
+    opacity: 1.0;
+    color: #c0c5ce;
+    text-decoration: none;
+    padding: 6px 40px;
+}
+
+.nav-link1:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition-duration: .55s;
+}
+
+header {
+    background-image: url("horse_racing_photo_by_pietro_mattia_on_unsplash.jpeg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px black;
+    padding: 15px;
+}
+
+.placeholder {
+    height: 10px
+}
+
+#viewheight {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.Equipment {
+    text-align: center;
+}
+
+.firstfeaturedproductsrow {
+    background-color: #B41B1B;
+}
+
+.secondfeaturedproductsrow {
+    background-color: #B41B1B;
+}
+
+.EquipmentH1 {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+
+.EquipmentH6 {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+}
+
+.leftfeaturedproduct {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    background-color: #B41B1B;
+}
+
+.centerfeaturedproduct {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    background-color: #B41B1B;
+}
+
+.rightfeaturedproduct {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    background-color: #B41B1B;
+}
+
+.rightfeaturedproduct img {
+    width: 100px;
+    height: 100px;
+    border-radius: 0%
+}
+
+.leftfeaturedproduct img {
+    width: 100px;
+    height: 100px;
+    border-radius: 0%
+}
+.services img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%
+}
+.circleclick:hover {
+    opacity: .8;
+}
+.Jordword {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px;
+    font-size: 30px;
+}
+.OtherProductsClass {
+    color: /* DARK GOLD #e5b506; */ white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none !important;
+    background-color: #B41B1B;
+}
+.OtherProductsClass14 {
+    color: /* DARK GOLD #e5b506; */ white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none !important;
+    background-color: #1b74b4;
+
+}
+.OtherProductsClass:hover {
+    color: #FFD700;
+    transition-duration: .2s;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none !important;
+}
+.card-title {
+    color: #B41B1B;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none !important;
+}
+.card-text {
+    color: black;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    text-decoration: none !important;
+}
+
+.services span {
+    width: 100px;
+    display: inline-block;
+}
+
+
+
+.services {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+
+}
+.events img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.events {
+    text-align: center;
+}
+.events span {
+    width: 200px;
+    display: inline-block;
+}
+.Equipment {
+    background-color: #B41B1B;
+}
+.events i{  
+    font-size:30px;
+    padding: 25px 20px;
+
+    color: #B41B1B;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.contactus textarea {
+    height: 50px;
+    width: 100%;
+    border-radius: 0%;
+}
+
+.Mission {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 3px;
+} 
+.Team img {
+    height:150px;
+    width:150px;
+    border-radius:0%;
+    
+}
+
+.Team {
+    text-align: center;
+}
+
+.intern {
+    text-align: center;
+}
+
+.Contactus img {
+    width: 50px;
+    height: 50px;
+    border-radius: 0%
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* Style inputs */
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #B41B1B;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type=submit]:hover {
+    background-color: #B41B1B;
+    color: cyan;
+}
+
+/* Style the container/contact section */
+
+.contactus {
+    border-radius: 5px;
+    background-color: #B41B1B;
+    padding: 10px;
+    text-align: right;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+}
+.addresslocationsection {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+}
+.Comtitle {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.trustrow1 {
+    color: white;
+    background-color: black;
+}
+.trustrow2 {
+    color: #B41B1B;
+    background-color: #0EBFE9;
+}
+#gradientbackground {
+    background-color: #1fc8db;
+    background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    color: white;
+    opacity: 0.95;
+}
+.OtherProductsClass2 {
+    color: white;
+    font-size: 17px;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+    text-decoration: none !important;
+}
+
+.OtherProductsClass2:hover {
+    color: #FFD700;
+    transition-duration: .2s;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+    text-decoration: none !important;
+}
+.OtherProductsClass3 {
+    color: white;
+    font-size: 17px;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none !important;
+}
+.PANELtrustedby {
+    text-align: justify;
+    text-align-last: right;
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+}
+.interestedtrustedby {
+    color: white;
+    font-size: 17px;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none !important;
+}
+.textforcontactsection1 {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.textforcontactsection {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    padding-top: 10px;
+    text-decoration: none !important;
+}
+.textforblurb {
+    color: white;
+    font-family: 'Prata', serif;
+    font-weight: bold;
+    text-align: justify;
+    text-align-last: center;
+    text-decoration: none !important;
+}
+.placeholderinfooter {
+    font-size: 0px;
+    visibility: hidden;
+}
+
+
+.ParagraphEmail {
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Prata', serif;
+    font-weight: normal;
+    text-align: center;
+    text-align-last: center;
+    text-decoration: none !important;
+}
+
+
+.HRfootsie {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 0;
+    border-top: 1px solid grey;
+}
+
+footer {
+    background-color: #f2f2f2 !important;
+    max-width: 100% !important;
+}
+.footsie {
+    font-size: 25px;
+}
+
+.footsierow {
+    color: #7c7c7c !important; /* or this color: #6e6e6e*/
+    font-size: 25px;
+    font-size: 25px;
+}
+
+.footsierowfirst {
+    color: #7c7c7c/* or this color: #6e6e6e*/
+    !important;
+    font-size: 25px;
+    text-align: left;
+}
+
+.footsierowfirst {
+    color: #7c7c7c/* or this color: #6e6e6e*/
+    !important;
+    font-size: 20px;
+}
+
+.footsieh6 {
+    color: black;
+    font-size: 20px;
+}
+.smicon:hover {
+    color: #0EBFE9;
+    cursor: pointer;
+}
+
+.smicon1:hover {
+    color: #FF00FF;
+    cursor: pointer;
+}
+
+.smicon2:hover {
+    color: #ff0000;
+    cursor: pointer;
+}
+.footsietextformatFounderlink {
+    text-decoration: none !important;
+    color: #7c7c7c;
+}
+.footerlinks:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.footerlinks2:hover {
+    color: #B41B1B;
+    transition-duration: .25s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.RRheadtag {
+    color: white;
+    font-size: 100px;
+}
+.RRinFootsie {
+    text-align: center;
+}
+.btn-secondary {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: #008CBA; /* Blue */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    transform: scale(1.05); 
+}
+.btn-secondary:hover {
+    transform: scale(1.05);
+    background-color: #008000;
+    color: white;
+}
+.btn-primary:active {
+  transform: translateY(2px);
+}
+.btn-secondary:active {
+  transform: translateY(2px);
+}
