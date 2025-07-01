@@ -517,12 +517,12 @@ footer {
     font-size: 20px;
 }
 .smicon:hover {
-    color: #0EBFE9;
+    color: #000000;
     cursor: pointer;
 }
 
 .smicon1:hover {
-    color: #FF00FF;
+    color: #006ecf;
     cursor: pointer;
 }
 
@@ -541,7 +541,7 @@ footer {
 }
 
 .footerlinks2:hover {
-    color: #B41B1B;
+    color: #1dd317;
     transition-duration: .25s;
     cursor: pointer;
     text-decoration: none;
