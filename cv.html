@@ -25,20 +25,51 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light btn-light" style="background-color: #000000"> <!--Previous Logo used was RRLogoWhiteCompressed.png-->
-    <a class="navbar-brand navbar-companyname" style="color: #FFFFFF;" href="https://www.alexsilanoleonardi.com"><img src="" height="20px" style="padding: 0px 10px;">Portfolio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-                </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto"> <!--style="padding-right: 210px"-->
-        <a class="nav-item1 nav-link1" href="cv.html">Academic CV</a>
-        <a class="nav-item1 nav-link1" href="#Research">Research</a>
-        <a class="nav-item1 nav-link1" href="#Contact">Contact</a>
-        <a class="nav-item1 nav-link1" href="#About">About</a>
-      </div>
-    </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light btn-light" style="background:#000">
+  <a class="navbar-brand navbar-companyname" style="color:#fff;" href="https://www.MYWEBSITE.com">
+    Portfolio
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link1" href="cv.html">Academic CV</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a  class="nav-link1 dropdown-toggle"
+            href="#" id="researchDropdown"
+            role="button"
+            data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          Research
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right"
+             aria-labelledby="researchDropdown">
+          <a class="dropdown-item" href="tqft.html">TQFT</a>
+          <a class="dropdown-item" href="ammonia.html">Ammonia</a>
+          <a class="dropdown-item" href="superliealgebra.html">Super Lie Algebra</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link1" href="#Contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link1" href="#About">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 
 
 <div id="viewheight" class="row mt-5" style="background-color:rgb(0, 0, 0)">
