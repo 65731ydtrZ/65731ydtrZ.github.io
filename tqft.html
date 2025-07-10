@@ -74,16 +74,28 @@
 
 <div style="height: 100px;"></div>
 
+
+
 <div id="viewheight" class="row mt-7" style="background-color:rgb(0, 0, 0)">
   <div class="col-md-2 nowrap" style="background-color:rgb(0, 0, 0);height:100%;">
   </div>
   <div class="col-md-8 nowrap" style="background-color:rgb(0, 0, 0);height:100%;">
-    <iframe
-        src="https://docs.google.com/gview?url=https://www.alexsilanoleonardi.com/tqft.pdf&embedded=true"
-        width="100%"
-        height="600px"
-        style="border: none;">
-      </iframe>
+    <div id="pdf-container"></div>
+    <script src="https://unpkg.com/pdfjs-dist/build/pdf.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist/build/pdf.worker.js';
+      const loadingTask = pdfjsLib.getDocument('https://www.alexsilanoleonardi.com/tqft.pdf');
+      loadingTask.promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          const viewport = page.getViewport({ scale: 1.5 });
+          const canvas = document.createElement('canvas');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          document.getElementById('pdf-container').appendChild(canvas);
+          page.render({ canvasContext: canvas.getContext('2d'), viewport });
+        });
+      });
+    </script>
   </div>
   <div class="col-md-2 nowrap" style="background-color:rgb(0, 0, 0);height:100%;">
   </div>
