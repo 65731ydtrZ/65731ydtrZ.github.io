@@ -6,7 +6,7 @@
          url('Hero-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
          url('Hero-Light.svg') format('svg'); /* Legacy iOS */
 }
-  
+
 h2 {
     font-family: myFirstFont;
     color: rgb(255, 255, 255);
@@ -25,6 +25,10 @@ h2 {
     font-family: myFirstFont;
     color: rgb(255, 255, 255);
     font-size: 5em;
+  }
+
+.greenhover:hover {
+    background-color: #1dd317;
   }
 
   .col-md-10 span {
