@@ -92,10 +92,52 @@
 -->
 
 <div id="viewheight" class="row" style="background-color:rgb(0, 0, 0)">
-  <div class="col-md-12 nowrap" style="background-color:rgb(0, 0, 0);height:100%;">
-    <span>ALEX SILANO LEONARDI</span>
+  <div class="col-md-12 nowrap" style="background-color:rgb(0, 0, 0); height:100%;">
+
+    <span
+      id="companyName"
+      style="cursor: pointer; color: white; font-size: 40px;"
+    >
+      ALEX SILANO LEONARDI
+    </span>
+
+<div id="aboutSection" style="display: none; cursor: pointer; color: white;">
+      <div>
+        <h1 style="font-size: 80px; padding-top: 190px; text-align: center;">
+          About
+        </h1>
+      </div>
+      <div class="row" style="padding-bottom: 150px">
+        <div class="col-md-3 wrap"></div>
+        <div class="col-md-6 wrap">
+          <h1 style="font-size: 20px">
+            I am a researcher in the Jaffe Group at the Harvard Department of Physics, where I am interested in quantum complexity and topics in quantum information, more broadly. I recently graduated from Harvard, where I studied Physics and Mathematics. During Summer 2024, I was an Quantum Error Correction REU researcher at the University of Maryland, College Park advised by Prof. Victor V. Albert and Prof. Nathanan Tantivasadakarn. Prior to that, during Summer 2023, I was a Quantum Computing SULI Intern at Brookhaven National Laboratory under the mentorship of Prof. Layla Hormozi.
+
+          </h1>
+        </div>
+        <div class="col-md-3 wrap"></div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<script>
+  (function() {
+    var nameEl  = document.getElementById('companyName');
+    var aboutEl = document.getElementById('aboutSection');
+
+    function toggle() {
+      var showingAbout = aboutEl.style.display !== 'none';
+      aboutEl.style.display = showingAbout ? 'none' : 'block';
+      nameEl.style.display  = showingAbout ? 'inline' : 'none';
+    }
+
+    nameEl.addEventListener('click', toggle);
+    aboutEl.addEventListener('click', toggle);
+  })();
+</script>
+
 
 
 
