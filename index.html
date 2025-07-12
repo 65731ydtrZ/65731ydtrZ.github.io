@@ -201,21 +201,6 @@
 
 
 
-<style>
-  #animationContainer {
-    position: fixed;
-    inset: 0;              
-    background-color: #000000;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  canvas#mziCanvas { width: 100%; height: 100%; }
-</style>
-
-<div id="animationContainer">
-  <canvas id="mziCanvas"></canvas>
-</div>
-
 <script>
 (function () {
   const loadingEl = document.createElement('div');
@@ -271,8 +256,14 @@
   const pathA = [
     [ 80+50,250], [230+50,250], [400+50,250], [400+50,150], [400+50,65]
   ];
+  const pathAA = [
+                [400+50, 150], [550+50,150]
+  ];
   const pathB = [
                 [230+50,250], [230+50,150], [400+50, 150], [550+50,150]
+  ];
+  const pathBB = [
+                [400+50,150], [400+50,65]
   ];
 
   function withLengths(path) {
@@ -287,7 +278,9 @@
     return {segs,total:len};
   }
   const beamA = withLengths(pathA);
+  const beamAA = withLengths(pathAA);
   const beamB = withLengths(pathB);
+  const beamBB = withLengths(pathBB);
 
   function drawOptic(o, alpha=1) {
     ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = '#555';
@@ -349,7 +342,7 @@
 
   const t0   = performance.now();
   const T_FADE = 1000;
-  const T_BEAM = 4000; 
+  const T_BEAM = 1250; 
 
   requestAnimationFrame(function loop(now){
     const t = now - t0;
@@ -367,6 +360,12 @@
       if (tBeam > splitFraction) {
         const subT = (tBeam - splitFraction) / (1 - splitFraction);
         drawBeam(beamB, beamB.total * subT);
+        
+        const splitFractionB = beamB.segs[2].acc / beamB.total;
+        if (subT > splitFractionB) {
+          const subT2 = (subT - splitFractionB) / (1 - splitFractionB);
+          drawBeam(beamBB, beamBB.total * subT2);
+          drawBeam(beamAA, beamAA.total * subT2);}
       }
     }
     if (t < T_FADE + T_BEAM) {
