@@ -404,7 +404,9 @@
       nameEl.style.display  = showingAbout ? 'block' : 'none';
     }
     nameEl.addEventListener('click',  toggle);
+    nameEl.onclick = () => umami.track('Alex Silano Leonardi Toggled');
     aboutEl.addEventListener('click', toggle);
+    aboutEl.onclick = () => umami.track('About Me section Toggled');
   }
 })();
 </script>
