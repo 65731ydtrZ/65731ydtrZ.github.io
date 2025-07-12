@@ -201,6 +201,21 @@
 
 
 
+<style>
+  #animationContainer {
+    position: fixed;
+    inset: 0;              
+    background-color: #000000;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  canvas#mziCanvas { width: 100%; height: 100%; }
+</style>
+
+<div id="animationContainer">
+  <canvas id="mziCanvas"></canvas>
+</div>
+
 <script>
 (function () {
   const loadingEl = document.createElement('div');
@@ -360,12 +375,12 @@
       if (tBeam > splitFraction) {
         const subT = (tBeam - splitFraction) / (1 - splitFraction);
         drawBeam(beamB, beamB.total * subT);
-        
         const splitFractionB = beamB.segs[2].acc / beamB.total;
         if (subT > splitFractionB) {
           const subT2 = (subT - splitFractionB) / (1 - splitFractionB);
           drawBeam(beamBB, beamBB.total * subT2);
-          drawBeam(beamAA, beamAA.total * subT2);}
+          drawBeam(beamAA, beamAA.total * subT2);
+        }
       }
     }
     if (t < T_FADE + T_BEAM) {
