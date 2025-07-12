@@ -118,22 +118,6 @@
   </div>
 </div>
 
-<script>
-  (function() {
-    var nameEl  = document.getElementById('viewheight');
-    var aboutEl = document.getElementById('aboutSection');
-
-    function toggle() {
-      var showingAbout = aboutEl.style.display !== 'none';
-      aboutEl.style.display = showingAbout ? 'none' : 'block';
-      nameEl.style.display  = showingAbout ? 'block' : 'none';
-    }
-
-    nameEl.addEventListener('click', toggle);
-    aboutEl.addEventListener('click', toggle);
-  })();
-</script>
-
 <div style="padding-top: 150px"></div>
 
 <div style="padding-top: 150px"></div>
@@ -215,6 +199,199 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+
+<style>
+  #animationContainer {
+    position: fixed;
+    inset: 0;              
+    background-color: #000000;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  canvas#mziCanvas { width: 100%; height: 100%; }
+</style>
+
+<div id="animationContainer">
+  <canvas id="mziCanvas"></canvas>
+</div>
+
+<script>
+(function () {
+  const loadingEl = document.createElement('div');
+  loadingEl.style.position      = 'fixed';
+  loadingEl.style.top           = '50%';
+  loadingEl.style.left          = '50%';
+  loadingEl.style.transform     = 'translate(-50%,-50%)';
+  loadingEl.style.color         = 'lime';
+  loadingEl.style.fontSize      = '2em';
+  loadingEl.style.pointerEvents = 'none';
+  loadingEl.textContent         = 'Loading.';
+  document.getElementById('animationContainer').appendChild(loadingEl);
+  
+  let dotCount = 1;
+  const dotInterval = setInterval(() => {
+    dotCount = dotCount % 3 + 1;
+    loadingEl.textContent = 'Loading' + '.'.repeat(dotCount);
+  }, 500);
+
+  
+  const nameEl  = document.getElementById('viewheight');
+  const aboutEl = document.getElementById('aboutSection');
+  nameEl.style.display  = 'none';
+  aboutEl.style.display = 'none';
+
+  
+  const canvas = document.getElementById('mziCanvas');
+  const ctx    = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const BX = 800, BY = 800;
+  function Sx(x) { return x * canvas.width  / BX; }
+  function Sy(y) { return y * canvas.height / BY; }
+
+  const optics = [
+    {type:'laser2',   x:  55+50, y:250, w:45, h:30},
+    {type:'laser',   x:  60+50, y:250, w:40, h:20},
+    {type:'lens',    x: 70+50, y:245, r:3},
+    {type:'bs',      x: 230+50, y:250, s:30},
+    {type:'mirror',  x: 400+50, y:250, s:28},
+    {type:'bs',      x: 400+50, y:150, s:30},
+    {type:'mirror',  x: 230+50, y: 150, s:28},
+    {type:'screen',  x: 578+50, y:125, w:60, h:50},
+    {type:'screen2',  x: 400+50, y: 8, w:60, h:50},
+  ];
+
+  const pathA = [
+    [ 80+50,250], [230+50,250], [400+50,250], [400+50,150], [400+50,65]
+  ];
+  const pathB = [
+                [230+50,250], [230+50,150], [400+50, 150], [550+50,150]
+  ];
+
+  function withLengths(path) {
+    let segs = [], len = 0;
+    for (let i = 1; i < path.length; ++i) {
+      const dx = path[i][0] - path[i-1][0];
+      const dy = path[i][1] - path[i-1][1];
+      const l  = Math.hypot(dx,dy);
+      segs.push({p1:path[i-1], p2:path[i], l, acc: len});
+      len += l;
+    }
+    return {segs,total:len};
+  }
+  const beamA = withLengths(pathA);
+  const beamB = withLengths(pathB);
+
+  function drawOptic(o, alpha=1) {
+    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = '#555';
+    ctx.strokeStyle = '#999'; ctx.lineWidth = 2;
+    switch(o.type) {
+      case 'laser2':
+        ctx.fillStyle = '#3b3b3b';
+        ctx.fillRect(Sx(o.x),Sy(o.y-o.h/2), Sx(o.w),Sy(o.h));
+        break;
+      case 'laser':
+        ctx.fillStyle = '#888';
+        ctx.fillRect(Sx(o.x),Sy(o.y-o.h/2), Sx(o.w),Sy(o.h));
+        break;
+      case 'lens':
+        ctx.beginPath();
+        ctx.arc(Sx(o.x),Sy(o.y), Sx(o.r), 0, Math.PI*2);
+        ctx.fill();
+        break;
+      case 'bs':
+        ctx.translate(Sx(o.x),Sy(o.y));
+        ctx.rotate(Math.PI/4);
+        ctx.fillStyle = '#666';
+        ctx.fillRect(-Sx(o.s/2),-Sy(o.s/2), Sx(o.s),Sy(o.s));
+        break;
+      case 'mirror':
+        ctx.translate(Sx(o.x),Sy(o.y));
+        ctx.rotate(Math.PI/4);
+        ctx.fillStyle = '#aaa';
+        ctx.fillRect(-Sx(o.s/2),-Sy(o.s/2), Sx(o.s),Sy(o.s));
+        break;
+      case 'screen':
+        ctx.fillStyle = '#444';
+        ctx.fillRect(Sx(o.x-o.w/2), Sy(o.y), Sx(o.w), Sy(o.h));
+        break;
+      case 'screen2':
+        ctx.fillStyle = '#444';
+        ctx.fillRect(Sx(o.x) - Sy(o.h)/2, Sy(o.y + o.h/2) - Sx(o.w)/2, Sy(o.h), Sx(o.w));
+        break;
+    }
+    ctx.restore();
+  }
+
+  function drawBeam(beam, lengthToShow) {
+    ctx.strokeStyle = 'lime';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    for (let s of beam.segs) {
+      if (lengthToShow <= s.acc) break; 
+      const segDone = Math.min(s.l, lengthToShow - s.acc);
+      const ratio   = segDone / s.l;
+      const x = s.p1[0] + (s.p2[0]-s.p1[0])*ratio;
+      const y = s.p1[1] + (s.p2[1]-s.p1[1])*ratio;
+      ctx.moveTo(Sx(s.p1[0]), Sy(s.p1[1]));
+      ctx.lineTo(Sx(x), Sy(y));
+      if (segDone < s.l) break;
+    }
+    ctx.stroke();
+  }
+
+  const t0   = performance.now();
+  const T_FADE = 1000;
+  const T_BEAM = 4000; 
+
+  requestAnimationFrame(function loop(now){
+    const t = now - t0;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const alpha = Math.min(1, t / T_FADE);
+    ctx.fillStyle = '#000';
+    ctx.globalAlpha = alpha;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    optics.forEach(o => drawOptic(o, alpha));
+    if (t > T_FADE) {
+      ctx.globalAlpha = 1;
+      const tBeam = Math.min(1, (t - T_FADE) / T_BEAM);
+      drawBeam(beamA, beamA.total * tBeam);
+      const splitFraction = beamA.segs[0].l / beamA.total;
+      if (tBeam > splitFraction) {
+        const subT = (tBeam - splitFraction) / (1 - splitFraction);
+        drawBeam(beamB, beamB.total * subT);
+      }
+    }
+    if (t < T_FADE + T_BEAM) {
+      requestAnimationFrame(loop);
+    } else {
+      finishIntro();
+    }
+  });
+
+  function finishIntro() {
+    clearInterval(dotInterval);
+    document.getElementById('animationContainer').remove();
+    nameEl.style.display  = 'block';
+    aboutEl.style.display = 'none';
+
+    function toggle() {
+      const showingAbout = aboutEl.style.display !== 'none';
+      aboutEl.style.display = showingAbout ? 'none' : 'block';
+      nameEl.style.display  = showingAbout ? 'block' : 'none';
+    }
+    nameEl.addEventListener('click',  toggle);
+    aboutEl.addEventListener('click', toggle);
+  }
+})();
+</script>
 
 </body>
 
