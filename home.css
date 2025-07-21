@@ -88,6 +88,24 @@ nav {
     transition-duration: .55s;
 }
 
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: #fff;
+  }
+  .navbar-collapse .nav-link .nav-link1 {
+    color: #000;        
+  }
+  .nav-link1:hover {
+    color: #02dc02;
+  }
+  .navbar-collapse .dropdown-toggle::after {
+    border-top-color: #000; 
+  }
+  .navbar-collapse .dropdown-toggle[aria-expanded="true"] {
+    color: #02dc02;         
+  }
+}
+
 header {
     background-image: url("horse_racing_photo_by_pietro_mattia_on_unsplash.jpeg");
     background-repeat: repeat;
